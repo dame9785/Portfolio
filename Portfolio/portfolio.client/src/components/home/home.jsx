@@ -1,5 +1,6 @@
 import "./home.css";
 import { FiArrowDown } from "react-icons/fi";
+import { getProjects } from "../../services/projectService";
 import { useRef, useEffect, useState } from "react";
 
 import ProjectImageUrl from "../../assets/example-project.jpg";
@@ -11,24 +12,20 @@ function Home() {
         linkContentRef.current?.scrollIntoView({ behavior: "smooth" });
     };
 
+    //Get projects
     useEffect(() => {
-        const getData = async () => {
+        const loadData = async () => {
             try {
-                const res = await fetch("https://localhost:7274/api/projects/GetProjects");
-
-                if (!res.ok) {
-                    throw new Error(`HTTP error! Status: ${res.status}`);
-                }
-
-                const data = await res.json();
+                const data = await getProjects();
                 setProjects(data);
             } catch (error) {
-                console.error("Kunde inte hämta projekt:", error);
+                console.error(error);
             }
         };
 
-        getData();
+        loadData();
     }, []);
+
 
     return (
         <div className="h-screen flex flex-col">
