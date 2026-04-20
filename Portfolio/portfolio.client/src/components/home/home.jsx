@@ -1,58 +1,92 @@
-    import "./home.css";
-    import { FiArrowDown } from "react-icons/fi";
-    import { useRef } from "react";
+import "./home.css";
+import { FiArrowDown } from "react-icons/fi";
+import { useRef } from "react";
 
-    function Home() {
+// Project images
+import ProjectImage from "../../assets/exmpel-project.jpg";
 
-        const linkContentRef = useRef(null);
+function Home() {
+    const linkContentRef = useRef(null);
 
-        const scrollToLinks = () => {
-            linkContentRef.current?.scrollIntoView({ behavior: "smooth" })
-        }
+    const scrollToLinks = () => {
+        linkContentRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
 
-        const linksContents = [
-            {
-                title: "Link-1"
-            },
-            {
-                title: "Link-2"
-            },
-            {
-                title: "Link-3"
-            },
-        ];
+    const linksContents = [
+        {
+            title: "Project 1",
+            description:
+                "A personal portfolio built with React and ASP.NET Core API. Showcases my projects, skills, and experience with a clean and modern UI.",
+            imageUrl: ProjectImage,
+        },
+        {
+            title: "Project 2",
+            description:
+                "A personal portfolio built with React and ASP.NET Core API. Showcases my projects, skills, and experience with a clean and modern UI.",
+            imageUrl: ProjectImage,
+        },
+        {
+            title: "Project 3",
+            description:
+                "A personal portfolio built with React and ASP.NET Core API. Showcases my projects, skills, and experience with a clean and modern UI.",
+            imageUrl: ProjectImage,
+        },
+    ];
 
-        return (
-            <div className="h-screen flex flex-col">
+    return (
+        <div className="h-screen flex flex-col">
+            {/* TOP */}
+            <div className="flex-1 flex justify-center items-center container hero-content-parent">
+                <div className="hero-content-children flex flex-col items-center">
+                    <h1 className="hero-title">David Söderberg</h1>
 
-                {/* TOP (50%) */}
-                <div className="flex-1 flex justify-center items-center hero-content-parent">
-                    <div className="hero-content-children flex flex-col items-center">
-                        <h1 className="hero-title">David Söderberg</h1>
-                        <span className="text-lg text-white hero-span">
-                            Fullstack developer
-                        </span>
-                        <hr className="bg-white w-1/2 mt-2 opacity-50" />
-                        <button id="scrolldown-btn" onClick={scrollToLinks}>
-                            <FiArrowDown className="text-3xl" />
-                        </button>
-                    </div>
-                </div>
+                    <span className="text-lg text-white hero-span">
+                        Fullstack developer
+                    </span>
 
-                {/* BOTTOM (50%) */}
-                <div ref={linkContentRef} id="link-content-parent" className="hero-content-parent flex flex-col items-center">
-                    <div className="hero-content-children flex-1 flex justify-center items-center">
+                    <hr className="hero-divider" />
 
-                        {/* Links rad */}
-                        {linksContents.map((item, index) => (
-                            <div key={index} className="link-content-box">
-                                <span className="text-white">{item.title}</span>
-                            </div>
-                        ))}
-                    </div>
+                    <button id="scrolldown-btn" onClick={scrollToLinks}>
+                        <FiArrowDown className="text-3xl text-white" />
+                    </button>
                 </div>
             </div>
-        );
-    }
 
-    export default Home;
+            {/* BOTTOM */}
+            <div
+                ref={linkContentRef}
+                id="link-content-parent"
+                className="container flex flex-col items-center"
+            >
+                <div className="flex gap-10 flex-wrap justify-center items-center">
+                    {linksContents.map((item, index) => (
+                        <div key={index} className="link-content-box">
+
+                            {/* IMAGE */}
+                            <div className="image-box">
+                                <img src={item.imageUrl} alt={item.title} />
+                            </div>
+
+                            {/* TITLE */}
+                            <h3 className="project-title">{item.title}</h3>
+
+                            {/* LINE */}
+                            <div className="project-divider"></div>
+
+                            {/* TEXT */}
+                            <p className="project-description">{item.description}</p>
+
+                            {/* BUTTONS */}
+                            <div className="project-buttons">
+                                <button className="btn-primary">Live</button>
+                                <button className="btn-secondary">GitHub</button>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default Home;
