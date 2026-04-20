@@ -1,41 +1,37 @@
 import "./home.css";
 import { FiArrowDown } from "react-icons/fi";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 
-// Project images
-import ProjectImage from "../../assets/exmpel-project.jpg";
-
+import ProjectImageUrl from "../../assets/example-project.jpg";
 function Home() {
     const linkContentRef = useRef(null);
+    const [projects, setProjects] = useState([]);
 
     const scrollToLinks = () => {
         linkContentRef.current?.scrollIntoView({ behavior: "smooth" });
     };
 
-    const linksContents = [
-        {
-            title: "Project 1",
-            description:
-                "A personal portfolio built with React and ASP.NET Core API. Showcases my projects, skills, and experience with a clean and modern UI.",
-            imageUrl: ProjectImage,
-        },
-        {
-            title: "Project 2",
-            description:
-                "A personal portfolio built with React and ASP.NET Core API. Showcases my projects, skills, and experience with a clean and modern UI.",
-            imageUrl: ProjectImage,
-        },
-        {
-            title: "Project 3",
-            description:
-                "A personal portfolio built with React and ASP.NET Core API. Showcases my projects, skills, and experience with a clean and modern UI.",
-            imageUrl: ProjectImage,
-        },
-    ];
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const res = await fetch("https://localhost:7274/api/projects/GetProjects");
+
+                if (!res.ok) {
+                    throw new Error(`HTTP error! Status: ${res.status}`);
+                }
+
+                const data = await res.json();
+                setProjects(data);
+            } catch (error) {
+                console.error("Kunde inte hämta projekt:", error);
+            }
+        };
+
+        getData();
+    }, []);
 
     return (
         <div className="h-screen flex flex-col">
-            {/* TOP */}
             <div className="flex-1 flex justify-center items-center container hero-content-parent">
                 <div className="hero-content-children flex flex-col items-center">
                     <h1 className="hero-title">David Söderberg</h1>
@@ -52,31 +48,24 @@ function Home() {
                 </div>
             </div>
 
-            {/* BOTTOM */}
             <div
                 ref={linkContentRef}
                 id="link-content-parent"
                 className="container flex flex-col items-center"
             >
                 <div className="flex gap-10 flex-wrap justify-center items-center">
-                    {linksContents.map((item, index) => (
-                        <div key={index} className="link-content-box">
-
-                            {/* IMAGE */}
+                    {projects.map((item) => (
+                        <div key={item.id} className="link-content-box">
                             <div className="image-box">
-                                <img src={item.imageUrl} alt={item.title} />
+                                <img src={ProjectImageUrl} alt={item.title} />
                             </div>
 
-                            {/* TITLE */}
                             <h3 className="project-title">{item.title}</h3>
 
-                            {/* LINE */}
                             <div className="project-divider"></div>
 
-                            {/* TEXT */}
                             <p className="project-description">{item.description}</p>
 
-                            {/* BUTTONS */}
                             <div className="project-buttons">
                                 <button className="btn-primary">Live</button>
                                 <button className="btn-secondary">GitHub</button>
