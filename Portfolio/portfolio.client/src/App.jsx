@@ -1,15 +1,21 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import { Routes, Route } from "react-router-dom";
+
+//Components
+import Navbar from "../src/components/navbar/navbar.jsx";
+import Home from "../src/components/home/home.jsx";
 
 function App() {
     
 
     return (
-        <div className="min-h-screen flex items-center justify-center">
-            <h1 className="text-5xl font-bold text-white">
-                Tailwind fungerar
-            </h1>
-        </div>
+        <>
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<Home />} />
+            </Routes>
+        </>
     );
     
     

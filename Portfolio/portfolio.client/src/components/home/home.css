@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'LaMonarchie';
+    src: url('../../assets/La Monarchie de Saint Ombre.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.hero-content-parent {
+    min-height: calc(100vh - 109px);
+    font-family: 'LaMonarchie', cursive;
+} 
+
+.hero-title {
+    font-family: 'LaMonarchie', cursive;
+    font-size: 120px;
+    padding:25px;
+}
+
+.hero-span{
+    font-size:42px;
+}
+   #scrolldown-btn{
+       cursor:pointer;
+       padding:15px;
+   }
+
+
+
