@@ -26,7 +26,7 @@ namespace Portfolio.Server.Controllers
            },
            new Project
            {
-               Id = 2,
+               Id = 3,
                Title = "Project 2",
                Description = "A personal portfolio built with React and ASP.NET Core API. Showcases my projects, skills, and experience with a clean and modern UI.",
                ImageUrl = "../../assets/exmpel-project.jpg"

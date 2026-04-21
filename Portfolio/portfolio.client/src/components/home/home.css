@@ -1,26 +1,37 @@
 @font-face {
-    font-family: 'LaMonarchie';
-    src: url('../../assets/La Monarchie de Saint Ombre.ttf') format('truetype');
+    font-family: 'Vogue';
+    src: url('../../assets/Vogue.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'AnandaPersonalUse';
+    src: url('../../assets/Ananda Personal Use.ttf') format('truetype');
+}
+
+
+* {
+    font-family: 'Vogue', cursive;
 }
 
 .container {
-    min-height: calc(100vh - 109px);
+    min-height: 100vh;
 }
 
 /* HERO */
-.hero-content-parent {
-    font-family: 'LaMonarchie', cursive;
-}
-
 .hero-title {
     font-size: 120px;
     padding: 25px;
     color: white;
+    font-family: 'Vogue', cursive;
 }
 
-.hero-span {
-    font-size: 42px;
-}
+    .hero-title-children {
+        font-family: 'AnandaPersonalUse', cursive;
+    }
+
+    .hero-span {
+        font-size: 42px;
+    }
 
 #scrolldown-btn {
     cursor: pointer;
@@ -74,6 +85,7 @@
     font-size: 22px;
     font-weight: 600;
     text-align: center;
+
 }
 
 /* LINE */

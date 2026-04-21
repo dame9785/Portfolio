@@ -8,8 +8,21 @@ function Home() {
     const linkContentRef = useRef(null);
     const [projects, setProjects] = useState([]);
 
+
+    //Scroll down on click arrow-down
     const scrollToLinks = () => {
-        linkContentRef.current?.scrollIntoView({ behavior: "smooth" });
+        if (!linkContentRef.current) return;
+
+        const offset = 137;
+        const y =
+            linkContentRef.current.getBoundingClientRect().top +
+            window.scrollY -
+            offset;
+
+        window.scrollTo({
+            top: y,
+            behavior: "smooth",
+        });
     };
 
     //Get projects
@@ -28,12 +41,12 @@ function Home() {
 
 
     return (
-        <div className="h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col">
             <div className="flex-1 flex justify-center items-center container hero-content-parent">
                 <div className="hero-content-children flex flex-col items-center">
                     <h1 className="hero-title">David Söderberg</h1>
 
-                    <span className="text-lg text-white hero-span">
+                    <span className="text-lg text-white hero-span hero-title-children">
                         Fullstack developer
                     </span>
 

@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Vogue';
+    src: url('../../assets/Vogue.ttf') format('truetype');
+}
+
 .navbar {
     background: rgba(2, 6, 23, 0.6);
     backdrop-filter: blur(12px);
@@ -13,7 +18,7 @@ nav a {
     text-decoration: none;
     transition: 0.3s;
     position: relative;
-   
+    font-family: 'Vogue', cursive;
 }
 
     nav a:hover {
