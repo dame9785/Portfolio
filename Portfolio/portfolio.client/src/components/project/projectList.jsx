@@ -1,8 +1,8 @@
-import "./projectList.css";
+import "./ProjectList.css";
 import { getProjects, deleteProject, updateProduct } from "../../services/projectService";
-import { useRef, useEffect, useState, use } from "react";
+import { useEffect, useState} from "react";
 
-function projectList() {
+function ProjectList() {
 
     const [isEditing, setIsEditing] = useState(false);
 
@@ -133,4 +133,4 @@ function projectList() {
     );
 }
 
-export default projectList;
+export default ProjectList;

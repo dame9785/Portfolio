@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./addProject.css";
+import "./AddProject.css";
 
-function addProject() {
+function AddProject() {
 
 
     const [titleProject, setTitle] = useState("");
@@ -47,4 +47,4 @@ function addProject() {
     );
 }
 
-export default addProject;
+export default AddProject;

@@ -1,4 +1,4 @@
-import "./home.css";
+import "./Home.css";
 import { FiArrowDown } from "react-icons/fi";
 import { getProjects } from "../../services/projectService";
 import { useRef, useEffect, useState } from "react";

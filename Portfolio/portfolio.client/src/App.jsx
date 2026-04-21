@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react';
 import './App.css';
 import { Routes, Route } from "react-router-dom";
 
 //Components
-import Navbar from "../src/components/navbar/navbar.jsx";
-import Home from "../src/components/home/home.jsx";
-import AddProject from "../src/components/project/addProject.jsx";
-import ProjectList from "../src/components/project/projectList.jsx";
+import Navbar from "../src/components/navbar/Navbar.jsx";
+import Home from "../src/components/home/Home.jsx";
+import AddProject from "../src/components/project/AddProject.jsx";
+import ProjectList from "../src/components/project/ProjectList.jsx";
 
 function App() {
     
