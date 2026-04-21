@@ -8,7 +8,9 @@ function Navbar() {
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Projects</a></li>
                     <li><a href="#">Skills</a></li>
-                    <li className="contact-btn"><a href="#">Contact</a></li>
+                    {/*<li className="contact-btn"><a href="#">Contact</a></li>*/}
+                    <li><a href="/addProject">add project</a></li>
+                    <li><a href="/projectList">Project List</a></li>
                 </ul>
             </div>
         </nav>

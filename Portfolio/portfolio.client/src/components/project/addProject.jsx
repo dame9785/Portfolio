@@ -1,0 +1,50 @@
+import { useState } from "react";
+import "./addProject.css";
+
+function addProject() {
+
+
+    const [titleProject, setTitle] = useState("");
+    const [descriptionProject, setDescription] = useState("");
+    console.log(titleProject);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const project = {
+            title: titleProject,
+            description: descriptionProject,
+            imageUrl: ""
+        };
+
+        try {
+            const data = await addProject(project);
+            console.log("Success:", data);
+        } catch (error) {
+            console.error("Error:", error);
+        }
+        
+    }
+
+    return (
+        <div className="container wrapper-content">
+            <div className="row">
+                <div className="col-md-12">
+                    <form onSubmit={handleSubmit} className="col-md-6 offset-md-3">
+                        <div className="form-group p-2">
+                            <input className="form-control" required placeholder="Title"
+                                onChange={(e) => setTitle(e.target.value)}></input>
+                        </div>
+                        <div className="form-group p-2">
+                            <textarea className="form-control" required placeholder="description"
+                                onChange={(e) => setDescription(e.target.value)}></textarea>
+                        </div>
+                        <button type="submit" className="btn btn-success">Spara</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default addProject;
