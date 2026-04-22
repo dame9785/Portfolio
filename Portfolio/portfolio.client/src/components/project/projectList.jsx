@@ -69,7 +69,7 @@ function ProjectList() {
     }
 
     return (
-        <div className="container list-container">
+        <div className="container list-container pb-5">
             <table className="table text-white">
                 <thead>
                     <tr>
@@ -101,9 +101,10 @@ function ProjectList() {
 
             {isEditing && (
                 <div className="row edit-block">
-                    <div className="col-md-6">
+                    <div className="col-md-6 offset-2">
+                    <h1>Redigera projekt</h1>
                         <form onSubmit={saveProduct}>
-                            <div className="form-group">
+                            <div className="form-group text-left p-3">
                                 <label>Titel</label>
                                 <input
                                     className="form-control"
@@ -112,7 +113,7 @@ function ProjectList() {
                                 />
                             </div>
 
-                            <div className="form-group">
+                            <div className="form-group text-left p-3">
                                 <label>Beskrivning</label>
                                 <textarea
                                     rows="10"

@@ -59,11 +59,11 @@ function Home() {
                             </span>
                         </div>
                         <div className="col-md-12 flex gap-3 text-center justify-content-center p-5">
-                            <FaFacebook />
-                            <FaInstagram />
-                            <FaTwitter />
-                            <FaLinkedin />
-                            <FiGithub />
+                            <FaFacebook className="fa-social-logo" />
+                            <FaInstagram className="fa-social-logo" />
+                            <FaTwitter className="fa-social-logo" />
+                            <FaLinkedin className="fa-social-logo" />
+                            <FiGithub className="fa-social-logo" />
                         </div>
                     </div>
                     
