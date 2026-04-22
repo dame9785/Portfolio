@@ -1,19 +1,19 @@
 import "./Home.css";
-import { FiArrowDown } from "react-icons/fi";
+import {FiArrowDown, FiExternalLink, FiGithub} from "react-icons/fi";
+import { FaReact, FaHtml5, FaCss3Alt } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { getProjects } from "../../services/projectService";
 import { useRef, useEffect, useState } from "react";
-
 import ProjectImageUrl from "../../assets/example-project.jpg";
+
 function Home() {
     const linkContentRef = useRef(null);
     const [projects, setProjects] = useState([]);
 
-
-    //Scroll down on click arrow-down
     const scrollToLinks = () => {
         if (!linkContentRef.current) return;
 
-        const offset = 137;
+        const offset = 110;
         const y =
             linkContentRef.current.getBoundingClientRect().top +
             window.scrollY -
@@ -25,7 +25,6 @@ function Home() {
         });
     };
 
-    //Get projects
     useEffect(() => {
         const loadData = async () => {
             try {
@@ -39,33 +38,55 @@ function Home() {
         loadData();
     }, []);
 
-
     return (
-        <div className="min-h-screen flex flex-col">
-            <div className="flex-1 flex justify-center items-center container hero-content-parent">
-                <div className="hero-content-children flex flex-col items-center">
-                    <h1 className="hero-title">David Söderberg</h1>
+        <main className="home-page">
 
-                    <span className="text-lg text-white hero-span hero-title-children">
-                        Fullstack developer
-                    </span>
+            {/* BACKGROUND ICONS */}
+            <div className="bg-icons">
+                <FaReact className="bg-icon react-icon" />
+                <FaHtml5 className="bg-icon html-icon" />
+                <FaCss3Alt className="bg-icon css-icon" />
+            </div>
+
+            {/* HERO */}
+            <section className="hero-section">
+                <div className="hero-content">
+                    <h1 className="hero-title">David Söderberg</h1>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <span className="hero-span hero-title-children">
+                                Fullstack developer
+                            </span>
+                        </div>
+                        <div className="col-md-12 flex gap-3 text-center justify-content-center p-5">
+                            <FaFacebook />
+                            <FaInstagram />
+                            <FaTwitter />
+                            <FaLinkedin />
+                            <FiGithub />
+                        </div>
+                    </div>
+                    
 
                     <hr className="hero-divider" />
 
                     <button id="scrolldown-btn" onClick={scrollToLinks}>
-                        <FiArrowDown className="text-3xl text-white" />
+                        <FiArrowDown className="arrow-icon" />
                     </button>
                 </div>
-            </div>
+            </section>
 
-            <div
+            {/* PROJECTS */}
+            <section
                 ref={linkContentRef}
-                id="link-content-parent"
-                className="container flex flex-col items-center"
+                className="projects-section container"
             >
-                <div className="flex gap-10 flex-wrap justify-center items-center">
+                <h2 className="projects-heading">Projects</h2>
+
+                <div className="projects-grid">
                     {projects.map((item) => (
                         <div key={item.id} className="link-content-box">
+
                             <div className="image-box">
                                 <img src={ProjectImageUrl} alt={item.title} />
                             </div>
@@ -74,17 +95,36 @@ function Home() {
 
                             <div className="project-divider"></div>
 
-                            <p className="project-description">{item.description}</p>
+                            <p className="project-description">
+                                {item.description}
+                            </p>
 
                             <div className="project-buttons">
-                                <button className="btn-primary">Live</button>
-                                <button className="btn-secondary">GitHub</button>
+                                <a
+                                    href={item.liveUrl || "#"}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="btn-primary"
+                                >
+                                    Live <FiExternalLink />
+                                </a>
+
+                                <a
+                                    href={item.githubUrl || "#"}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="btn-secondary"
+                                >
+                                    GitHub <FiGithub />
+                                </a>
                             </div>
+
                         </div>
                     ))}
                 </div>
-            </div>
-        </div>
+            </section>
+
+        </main>
     );
 }
 

@@ -88,7 +88,7 @@ function ProjectList() {
                             <td>{item.title}</td>
                             <td>{item.description}</td>
                             <td>{item.imageUrl}</td>
-                            <td><button className="btn btn-sm btn-warning"
+                            <td><button className="btn-sm btn-warning"
                                 onClick={() => updateProject(item.id)}>Redigera</button></td>
                             <th scope="col"><button className="btn btn-sm btn-danger"
                                 onClick={() => handleProject(item.id)}>Ta bort</button></th>

@@ -1,65 +1,65 @@
-@font-face {
-    font-family: 'Vogue';
-    src: url('../../assets/Vogue.ttf') format('truetype');
+.navbar-wrapper {
+    position: fixed;
+    top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 999;
 }
 
 .navbar {
-    background: rgba(2, 6, 23, 0.6);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 12px 24px;
-}
-
-nav a {
-    color: #cbd5f5;
-    text-decoration: none;
-    transition: 0.3s;
-    position: relative;
-    font-family: 'Vogue', cursive;
-}
-
-    nav a:hover {
-        color: #60a5fa;
-    }
-
-    nav a::after {
-        content: "";
-        position: absolute;
-        width: 0%;
-        height: 2px;
-        background: #3b82f6;
-        left: 0;
-        bottom: -4px;
-        transition: 0.3s;
-    }
-
-    nav a:hover::after {
-        width: 100%;
-    }
-
-nav ul {
+    position: relative; /* viktigt */
+    width: 100%;
+    max-width: 1100px;
+    height: 70px;
     display: flex;
-    gap: 40px;
     align-items: center;
-    justify-content: center;
+    padding: 0 30px;
+    background: rgba(4, 14, 35, 0.7);
+    backdrop-filter: blur(14px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.navbar ul{
+    margin:0;
 }
 
-.contact-btn {
-    background: linear-gradient(135deg, #2563eb, #00c8ff);
-    padding: 8px 18px;
-    border-radius: 999px;
-    color: white;
-    transition: 0.3s;
+/* 🔥 CENTERED MENU */
+.navbar-links {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 35px;
+    list-style: none;
 }
 
-    .contact-btn:hover {
-        box-shadow: 0 0 15px rgba(0, 153, 255, 0.7);
-        transform: translateY(-2px);
+    /* LINKS */
+    .navbar-links a {
+        text-decoration: none;
+        color: #cbd5f5;
+        font-size: 14px;
+        transition: 0.3s;
+        position: relative;
     }
 
-    .contact-btn a {
-        color:rgba(2, 6, 23, 0.6);
-    }
+        /* HOVER */
+        .navbar-links a:hover {
+            color: #60a5fa;
+        }
+
+        /* UNDERLINE */
+        .navbar-links a::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            background: #3b82f6;
+            left: 0;
+            bottom: -5px;
+            transition: 0.3s;
+        }
+
+        .navbar-links a:hover::after {
+            width: 100%;
+        }
