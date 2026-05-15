@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Metadata;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Portfolio.Server.Data;
+using Portfolio.Server.Dtos;
 using Portfolio.Server.Models;
 
 namespace Portfolio.Server.Controllers
@@ -9,84 +12,64 @@ namespace Portfolio.Server.Controllers
     [ApiController]
     public class ProjectsController : ControllerBase
     {
-        //Projects
-        private static List<Project> _projects = new List<Project>() {
-           new Project
-           {
-               Id = 1,
-               Title = "Project 1",
-               Description = "A personal portfolio built with React and ASP.NET Core API. Showcases my projects, skills, and experience with a clean and modern UI.",
-               ImageUrl = "../../assets/exmpel-project.jpg"
-           },
-           new Project
-           {
-               Id = 2,
-               Title = "Project 2",
-               Description = "A personal portfolio built with React and ASP.NET Core API. Showcases my projects, skills, and experience with a clean and modern UI.",
-               ImageUrl = "../../assets/exmpel-project.jpg"
-           },
-           new Project
-           {
-               Id = 3,
-               Title = "Project 2",
-               Description = "A personal portfolio built with React and ASP.NET Core API. Showcases my projects, skills, and experience with a clean and modern UI.",
-               ImageUrl = "../../assets/exmpel-project.jpg"
-           }
-        };
+
+        private readonly AppDbContext _context;
+        public ProjectsController(AppDbContext context)
+        {
+            _context = context;
+        }
+
+
 
         [HttpGet, Route("GetProjects")]
-        public IActionResult GetProjects()
+        public async Task<ActionResult<IEnumerable<Project>>> GetProjects()
         {
-            var projects = _projects;
-        
-            if (projects == null) return NotFound();
-            
+            var projects = await _context.Projects.ToListAsync();
             return Ok(projects);
         }
 
         [HttpPost, Route("AddProject")]
-        public IActionResult AddProject([FromBody]Project project)
+        public async Task<IActionResult> AddProject([FromBody]Project project)
         {
 
             if (project == null)
             return BadRequest();
-            
-            List<Project> projects = _projects;
-            projects.Add(new Project()
-            {
-                Id = _projects.Count + 1,
-                Title = project.Title,
-                Description = project.Description,
-                ImageUrl= "../../assets/exmpel-project.jpg"
-            });
 
-            return Ok(projects);
+            //project.ImageUrl = "../../assets/exmpel-project.jpg";
+            _context.Projects.Add(project);
+            await _context.SaveChangesAsync();
+            
+            return Ok(project);
         }
 
         [HttpDelete, Route("DeleteProject/{id}")]
-        public IActionResult DeleteProject(int id)
+        public async Task<IActionResult> DeleteProject(int id)
         {
-            var project = _projects.FirstOrDefault(p => p.Id == id);
+            var project = await _context.Projects.FirstOrDefaultAsync(p => p.Id == id);
             if (project == null)
                 return NotFound();
             
-            _projects.Remove(project);
+            _context.Projects.Remove(project);
+           await _context.SaveChangesAsync();
+           
+            
             return NoContent();
         
         }
 
         [HttpPut, Route("UpdateProject/{projectId}")]
-        public IActionResult UpdateProject(int projectId, Project newProduct)
+        public async Task<IActionResult> UpdateProject(int projectId, CreateProjectDto createProjectDto)
         {
-            if (newProduct == null) return NoContent();
+            if (createProjectDto == null) return NoContent();
           
-            var project =  _projects.FirstOrDefault(p => p.Id == projectId);
+            var project = await _context.Projects.FirstOrDefaultAsync(p => p.Id == projectId);
             if (project == null) return BadRequest();
            
-            project.Title = newProduct.Title;
-            project.Description = newProduct.Description;
-            project.ImageUrl = newProduct.ImageUrl;
+            project.Title = createProjectDto.Title;
+            project.Description = createProjectDto.Description;
             
+            await _context.SaveChangesAsync();
+
             return Ok(project);
         }
 

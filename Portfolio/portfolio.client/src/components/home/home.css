@@ -8,6 +8,11 @@
     src: url('../../assets/Ananda Personal Use.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'Cinzel';
+    src: url('../../assets/CinzelDecorative-Regular.otf') format('truetype');
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -103,6 +108,7 @@ body {
 .hero-title {
     font-size: 110px;
     letter-spacing: 3px;
+    font-family: 'Cinzel', cursive;
 }
 
 .hero-title-children {

@@ -46,7 +46,8 @@ export const deleteProject = async (id) => {
     return true;
 }
 
-export const updateProduct = async (project) => {
+//Update Project
+export const updateProject = async (project) => {
     const respone = await fetch(API_URL + "UpdateProject/" + project.id, {
         method: "PUT",
         headers: {

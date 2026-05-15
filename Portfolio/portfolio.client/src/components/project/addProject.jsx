@@ -1,15 +1,29 @@
 import { useState } from "react";
 import "./AddProject.css";
+import { addProject } from "../../services/projectService";
+    
 
 function AddProject() {
 
-
     const [titleProject, setTitle] = useState("");
     const [descriptionProject, setDescription] = useState("");
-    console.log(titleProject);
+    const [imageFile, setImageFile] = useState(null);
 
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        setImageFile(file);
+    };
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const formData = new FormData();
+        formData.append("Title", titleProject);
+        formData.append("Description", descriptionProject);
+
+        if (imageFile) {
+            formData.append("ImageFile", imageFile);
+        }
 
         const project = {
             title: titleProject,
@@ -38,6 +52,9 @@ function AddProject() {
                         <div className="form-group p-2">
                             <textarea className="form-control" required placeholder="description"
                                 onChange={(e) => setDescription(e.target.value)}></textarea>
+                        </div>
+                        <div className="form-group p-2">
+                            <input type="file" accept="image/*" className="form-control" onChange={handleFileChange} />
                         </div>
                         <button type="submit" className="btn btn-success">Spara</button>
                     </form>
