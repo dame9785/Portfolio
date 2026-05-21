@@ -71,7 +71,7 @@ function Home() {
                             </a>
                           
                             <a target="_blank" href="https://github.com/dame9785">
-                                <FiGithub className="fa-social-logo github-icon " />
+                                <FiGithub className="fa-social-logo github-icon" />
                             </a>
                         </div>
                     </div>
@@ -111,7 +111,7 @@ function Home() {
                                     href={item.projectGithubUrl || "#"}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="btn-primary"
+                                    className="button btn-github-live"
                                 >
                                     Live <FiExternalLink />
                                 </a>
@@ -120,9 +120,9 @@ function Home() {
                                     href={item.projectGithubUrl || "#"}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="btn-secondary"
+                                    className="button btn-github"
                                 >
-                                    GitHub <FiGithub />
+                                    GitHub <FiGithub/>
                                 </a>
                             </div>
 
