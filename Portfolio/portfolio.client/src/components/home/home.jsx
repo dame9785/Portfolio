@@ -59,18 +59,19 @@ function Home() {
                                 Fullstack developer
                             </span>
                         </div>
-                        <div className="col-md-12 flex gap-3 text-center justify-content-center p-5">
+                        <div className="col-md-12 flex gap-3 text-center justify-content-center p-5 social-links-wrapper">
                             <a target="_blank" href="https://www.facebook.com/profile.php?id=61573370439782&locale=sv_SE">
-                                <FaFacebook className="fa-social-logo" />
+                                <FaFacebook className="fa-social-logo facebook-icon" />
+                            </a>
+                            <a target="_blank" href="https://linkedin.com/in/david-soderberg">
+                                <FaLinkedin className="fa-social-logo linkedin-icon" />
                             </a>
                             <a target="_blank" href="https://www.instagram.com/djanar97/">
-                                <FaInstagram className="fa-social-logo" />
+                                <FaInstagram className="fa-social-logo instagram-icon" />
                             </a>
-                            <a target="_blank" href="https://linkedin.com/in/david-soderberg"> 
-                                <FaLinkedin className="fa-social-logo" />
-                            </a>
+                          
                             <a target="_blank" href="https://github.com/dame9785">
-                                <FiGithub className="fa-social-logo" />
+                                <FiGithub className="fa-social-logo github-icon " />
                             </a>
                         </div>
                     </div>
