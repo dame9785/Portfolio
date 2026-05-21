@@ -30,6 +30,7 @@ function Home() {
             try {
                 const data = await getProjects();
                 setProjects(data);
+                console.log(data);
             } catch (error) {
                 console.error(error);
             }
@@ -59,11 +60,18 @@ function Home() {
                             </span>
                         </div>
                         <div className="col-md-12 flex gap-3 text-center justify-content-center p-5">
-                            <FaFacebook className="fa-social-logo" />
-                            <FaInstagram className="fa-social-logo" />
-                            <FaTwitter className="fa-social-logo" />
-                            <FaLinkedin className="fa-social-logo" />
-                            <FiGithub className="fa-social-logo" />
+                            <a target="_blank" href="https://www.facebook.com/profile.php?id=61573370439782&locale=sv_SE">
+                                <FaFacebook className="fa-social-logo" />
+                            </a>
+                            <a target="_blank" href="https://www.instagram.com/djanar97/">
+                                <FaInstagram className="fa-social-logo" />
+                            </a>
+                            <a target="_blank" href="https://linkedin.com/in/david-soderberg"> 
+                                <FaLinkedin className="fa-social-logo" />
+                            </a>
+                            <a target="_blank" href="https://github.com/dame9785">
+                                <FiGithub className="fa-social-logo" />
+                            </a>
                         </div>
                     </div>
                     
@@ -90,9 +98,7 @@ function Home() {
                             <div className="image-box">
                                 <img src={ProjectImageUrl} alt={item.title} />
                             </div>
-
                             <h3 className="project-title">{item.title}</h3>
-
                             <div className="project-divider"></div>
 
                             <p className="project-description">
@@ -101,7 +107,7 @@ function Home() {
 
                             <div className="project-buttons">
                                 <a
-                                    href={item.liveUrl || "#"}
+                                    href={item.projectGithubUrl || "#"}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="btn-primary"
@@ -110,7 +116,7 @@ function Home() {
                                 </a>
 
                                 <a
-                                    href={item.githubUrl || "#"}
+                                    href={item.projectGithubUrl || "#"}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="btn-secondary"
