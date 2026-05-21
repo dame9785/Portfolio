@@ -25,12 +25,12 @@ function Home() {
         });
     };
 
+    //Get All Projects
     useEffect(() => {
         const loadData = async () => {
             try {
                 const data = await getProjects();
                 setProjects(data);
-                console.log(data);
             } catch (error) {
                 console.error(error);
             }
