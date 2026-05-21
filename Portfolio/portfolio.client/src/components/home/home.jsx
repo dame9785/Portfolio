@@ -10,6 +10,8 @@ function Home() {
     const linkContentRef = useRef(null);
     const [projects, setProjects] = useState([]);
 
+
+    //Scroll Down To Projects On Arrow
     const scrollToLinks = () => {
         if (!linkContentRef.current) return;
 
